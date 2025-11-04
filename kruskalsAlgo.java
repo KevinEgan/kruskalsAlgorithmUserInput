@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Scanner;
 
 class GfG {
     public static int kruskalsMST(int V, int[][] edges) {
@@ -38,20 +39,27 @@ class GfG {
     }
 
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("$$$$$ Kruskal's Algorithm CLI");
+    
+        System.out.print("Enter number of vertices: ");
+        int vertices = scanner.nextInt();
+        System.out.print("Enter number of edges: ");
+        int numberOfEdges = scanner.nextInt();
         
-        // An edge contains, weight, source and destination
-        // $$$$$$ Input graph values here $$$$$$$$
-        int[][] firstGraph = {
-            {0, 1, 2}, {2, 3, 8}, {3, 5, 5}, {5, 6, 2}, {6, 1, 6}, {2, 4, 6}, {3, 4, 3}, {4, 5, 6}, {4, 6, 7}, {4, 1, 5}
-        };
+        //user input to create edges
+        int[][] edges = new int[numberOfEdges][3];
+        System.out.println("\nEnter edges in the following format: Source Destination Weight");
+        for (int i = 0; i < numberOfEdges; i++) {
+            System.out.print("Edge " + (i + 1) + ": ");
+            edges[i][0] = scanner.nextInt(); 
+            edges[i][1] = scanner.nextInt();
+            edges[i][2] = scanner.nextInt();
+        }
+        
+        System.out.println("FINAL RESULT: Minimum Spanning Tree cost = " + kruskalsMST(vertices, edges));
 
-        int[][] secondGraph = {
-            {0, 1, 4}, {1, 2, 8}, {2, 3, 7}, {3, 4, 9}, {4, 5, 10}, {5, 6, 2}, {6, 7, 1}, {7, 0, 8},
-            {1, 7, 11}, {2, 8, 2}, {8, 6, 6}, {5, 2, 4}, {3, 5, 14}, {7, 8, 7}
-        };
-
-        System.out.println("First graph:" + kruskalsMST(7, firstGraph));
-        System.out.println("Second graph:" + kruskalsMST(9, secondGraph));
     }
 }
 
